@@ -1,0 +1,99 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { config } from '../data/config';
+---
+
+<Base title="Privacidad" description={`Política de privacidad de ${config.name}`}>
+  <Header />
+  <main class="legal">
+    <div class="container">
+      <h1>Política de Privacidad</h1>
+      <p class="updated">Última actualización: {config.privacyEffectiveDate}</p>
+
+      <h2>1. Información que recopilamos</h2>
+      <p>{config.name} recopila la siguiente información durante el uso de la app:</p>
+      <ul>
+        {config.dataCollected.map(item => <li>{item}</li>)}
+      </ul>
+      <p><strong>No recopilamos:</strong> nombre, email, número telefónico, dirección física, ni cualquier dato personal identificable salvo que tú lo proporciones explícitamente vía correo de contacto.</p>
+
+      <h2>2. Cómo usamos la información</h2>
+      <ul>
+        <li>Mostrar contenido de la app (imágenes, audios, mapas)</li>
+        <li>Mejorar funcionalidad y detectar errores (crash reports)</li>
+        <li>Mostrar anuncios contextuales no personalizados (vía AdMob)</li>
+        <li>Cumplir obligaciones legales</li>
+      </ul>
+
+      <h2>3. Servicios de terceros</h2>
+      <p>{config.name} utiliza los siguientes servicios:</p>
+      <ul>
+        {config.thirdParties.map(svc => <li><strong>{svc}</strong></li>)}
+      </ul>
+      <p>Cada servicio tiene su propia política de privacidad. Te recomendamos revisarlas en sus sitios oficiales.</p>
+
+      <h2>4. Almacenamiento</h2>
+      <p>Todo contenido (imágenes, audios) se sirve desde Cloudflare R2 con cache local en tu dispositivo. No se sincronizan datos personales.</p>
+
+      <h2>5. Anuncios (AdMob)</h2>
+      <p>Mostramos anuncios mediante Google AdMob. AdMob puede usar identificadores publicitarios anónimos del dispositivo. Puedes deshabilitarlos en Configuración → Google → Anuncios.</p>
+      <p>Puedes desactivar anuncios completamente comprando la versión Pro desde la app.</p>
+
+      <h2>6. Tus derechos</h2>
+      <p>Tienes derecho a:</p>
+      <ul>
+        <li>Solicitar información sobre datos que pudimos recopilar</li>
+        <li>Solicitar eliminación (data colectada por terceros vía sus settings)</li>
+        <li>Desinstalar la app en cualquier momento</li>
+      </ul>
+
+      <h2>7. Niños</h2>
+      <p>{config.name} no está dirigida a menores de 13 años. No recopilamos datos de menores intencionalmente.</p>
+
+      <h2>8. Cambios a esta política</h2>
+      <p>Podemos actualizar esta política. Cambios serán publicados en esta página con fecha actualizada.</p>
+
+      <h2>9. Contacto</h2>
+      <p>Para preguntas sobre privacidad: <a href={`mailto:${config.contactEmail}`}>{config.contactEmail}</a></p>
+      <p><strong>Publisher:</strong> {config.publisher} · <a href={config.publisherUrl}>{config.publisherUrl}</a></p>
+    </div>
+  </main>
+  <Footer />
+</Base>
+
+<style>
+  .legal {
+    padding: 4rem 0 6rem;
+    min-height: 70vh;
+  }
+  .legal :global(h1) {
+    font-size: 2.25rem;
+    color: #fff;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+  }
+  .legal :global(.updated) {
+    color: #64748b;
+    font-size: 0.9rem;
+    margin-bottom: 2.5rem;
+  }
+  .legal :global(h2) {
+    color: #fff;
+    font-size: 1.25rem;
+    margin: 2rem 0 0.75rem;
+    font-weight: 600;
+  }
+  .legal :global(p) {
+    color: #94a3b8;
+    margin-bottom: 1rem;
+    line-height: 1.75;
+  }
+  .legal :global(ul) {
+    margin: 0.5rem 0 1.5rem 1.5rem;
+    color: #94a3b8;
+  }
+  .legal :global(li) { margin-bottom: 0.5rem; line-height: 1.7; }
+  .legal :global(strong) { color: #cbd5e1; }
+</style>

@@ -1,0 +1,98 @@
+---
+import { config } from '../data/config';
+---
+
+<section id="download" class="download">
+  <div class="container">
+    <h2>Descarga {config.name}</h2>
+    <p>Disponible para Android. iOS próximamente.</p>
+    <div class="badges">
+      {config.playStoreReady ? (
+        <a href={config.playStoreUrl} class="play-badge" target="_blank" rel="noopener">
+          <span class="play-icon">▶</span>
+          <div class="play-text">
+            <small>DISPONIBLE EN</small>
+            <strong>Google Play</strong>
+          </div>
+        </a>
+      ) : (
+        <div class="play-badge soon">
+          <span class="play-icon">⏳</span>
+          <div class="play-text">
+            <small>PRÓXIMAMENTE EN</small>
+            <strong>Google Play</strong>
+          </div>
+        </div>
+      )}
+    </div>
+  </div>
+</section>
+
+<style>
+  .download {
+    padding: 5rem 0;
+    text-align: center;
+    background: linear-gradient(180deg, #060f1f 0%, #030712 100%);
+    border-top: 1px solid #0f172a;
+  }
+  h2 {
+    font-size: 2rem;
+    color: #fff;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+  }
+  .download p {
+    color: #94a3b8;
+    margin-bottom: 2.5rem;
+  }
+  .badges {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .play-badge {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: #fff;
+    padding: 1rem 1.75rem;
+    border-radius: 14px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-decoration: none;
+  }
+  .play-badge:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(16, 185, 129, 0.4);
+    text-decoration: none;
+  }
+  .play-badge.soon {
+    background: #1e293b;
+    color: #94a3b8;
+    cursor: default;
+    border: 1px dashed #475569;
+  }
+  .play-badge.soon:hover {
+    transform: none;
+    box-shadow: none;
+  }
+  .play-icon {
+    font-size: 1.75rem;
+  }
+  .play-text {
+    text-align: left;
+    line-height: 1.2;
+  }
+  .play-text small {
+    display: block;
+    font-size: 0.7rem;
+    opacity: 0.85;
+    letter-spacing: 0.08em;
+  }
+  .play-text strong {
+    display: block;
+    font-size: 1.15rem;
+    font-weight: 700;
+  }
+</style>
